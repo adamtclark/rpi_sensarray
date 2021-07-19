@@ -12,6 +12,7 @@ do
 counter=1
 while [ $counter -le 10 ]
 do
+    date
     python3 air_humtemp.py >> ${air_humtemp_name}
     python3 soil_moist.py >> ${soil_moist_name}
     python3 soil_temp.py >> ${soil_temp_name}
