@@ -24,16 +24,16 @@ instance_01 = dht11.DHT11(pin=1)
 
 try:
   result_12 = instance_12.read()
-  result_01 = instance_01.read()
   if result_12.is_valid():
       print("Last valid input: " + str(datetime.datetime.now()))
 
       print("Temperature 01: %-3.1f C" % result_12.temperature)
       print("Humidity 01: %-3.1f %%" % result_12.humidity)
-
-      if result_01.is_valid():
-          print("Temperature 02: %-3.1f C" % result_01.temperature)
-          print("Humidity 02: %-3.1f %%" % result_01.humidity)
+  sleep(1)
+  result_01 = instance_01.read()
+  if result_01.is_valid():
+      print("Temperature 02: %-3.1f C" % result_01.temperature)
+      print("Humidity 02: %-3.1f %%" % result_01.humidity)
 
 except KeyboardInterrupt:
     print("Cleanup")
