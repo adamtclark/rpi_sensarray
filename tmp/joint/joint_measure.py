@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-
-import RPi.GPIO as GPIO
-import dht11
 from time import sleep
 import datetime
 import serial
@@ -37,6 +34,9 @@ camera.stop_preview()
 
 
 # Humidity
+import RPi.GPIO as GPIO
+import dht11
+
 # initialize GPIO
 GPIO.setwarnings(True)
 GPIO.setmode(GPIO.BCM)
