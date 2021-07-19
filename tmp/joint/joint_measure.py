@@ -1,3 +1,35 @@
+# Humidity
+import RPi.GPIO as GPIO
+import dht11
+
+# initialize GPIO
+GPIO.setwarnings(True)
+GPIO.setmode(GPIO.BCM)
+
+# read data using pin 12 and 1
+instance_12 = dht11.DHT11(pin=12)
+instance_01 = dht11.DHT11(pin=1)
+
+try:
+    trigger = True
+    while trigger:
+        result_12 = instance_12.read()
+        result_01 = instance_01.read()
+        if result_12.is_valid():
+            print("Last valid input: " + str(datetime.datetime.now()))
+            print("Temperature 01: %-3.1f C" % result_12.temperature)
+            print("Humidity 01: %-3.1f %%" % result_12.humidity)
+
+            if result_01.is_valid():
+                print("Temperature 02: %-3.1f C" % result_01.temperature)
+                print("Humidity 02: %-3.1f %%" % result_01.humidity)
+                trigger = False
+        time.sleep(2)
+
+except KeyboardInterrupt:
+    print("Cleanup")
+    GPIO.cleanup()
+
 #!/usr/bin/python3
 from time import sleep
 import datetime
@@ -30,37 +62,3 @@ tmp = datetime.datetime.now()
 
 camera.capture('out/picture_'+tmp.strftime("%d.%m.%Y_%H.%M.%S")+'.jpg')
 camera.stop_preview()
-
-
-
-# Humidity
-import RPi.GPIO as GPIO
-import dht11
-
-# initialize GPIO
-GPIO.setwarnings(True)
-GPIO.setmode(GPIO.BCM)
-
-# read data using pin 12 and 1
-instance_12 = dht11.DHT11(pin=12)
-instance_01 = dht11.DHT11(pin=1)
-
-try:
-    trigger = True
-    while trigger:
-        result_12 = instance_12.read()
-        result_01 = instance_01.read()
-        if result_12.is_valid():
-            print("Last valid input: " + str(datetime.datetime.now()))
-            print("Temperature 01: %-3.1f C" % result_12.temperature)
-            print("Humidity 01: %-3.1f %%" % result_12.humidity)
-
-            if result_01.is_valid():
-                print("Temperature 02: %-3.1f C" % result_01.temperature)
-                print("Humidity 02: %-3.1f %%" % result_01.humidity)
-                trigger = False
-        time.sleep(2)
-
-except KeyboardInterrupt:
-    print("Cleanup")
-    GPIO.cleanup()
