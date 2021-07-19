@@ -16,17 +16,24 @@ try:
     trigger = True
     while trigger:
         result_12 = instance_12.read()
-        time.sleep(2)
-        result_01 = instance_01.read()
-        time.sleep(2)
         if result_12.is_valid():
-            if result_01.is_valid():
-                print("Last valid input: " + str(datetime.datetime.now()))
-                print("Temperature 01: %-3.1f C" % result_12.temperature)
-                print("Humidity 01: %-3.1f %%" % result_12.humidity)
-                print("Temperature 02: %-3.1f C" % result_01.temperature)
-                print("Humidity 02: %-3.1f %%" % result_01.humidity)
-                trigger = False
+            print("Last valid input: " + str(datetime.datetime.now()))
+            print("Temperature 01: %-3.1f C" % result_12.temperature)
+            print("Humidity 01: %-3.1f %%" % result_12.humidity)
+            trigger = False
+        #else:
+            #print("error H1")
+
+    trigger = True
+    while trigger:
+        result_01 = instance_01.read()
+        if result_01.is_valid():
+            print("Last valid input: " + str(datetime.datetime.now()))
+            print("Temperature 02: %-3.1f C" % result_01.temperature)
+            print("Humidity 02: %-3.1f %%" % result_01.humidity)
+            trigger = False
+        #else:
+            #print("error H2")
 
 except KeyboardInterrupt:
     print("Cleanup")
