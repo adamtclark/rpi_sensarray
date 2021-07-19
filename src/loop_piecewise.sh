@@ -1,5 +1,7 @@
 #!/bin/bash
 
+while true
+do
 counter=1
 while [ $counter -le 10 ]
 do
@@ -15,3 +17,5 @@ python3 takepic.py
 
 rpid=`cat ../../idinfo/sensorid`
 git commit -m "auto upload from ${rpid}" -a
+git push
+done
