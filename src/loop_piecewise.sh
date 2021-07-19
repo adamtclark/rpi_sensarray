@@ -12,4 +12,6 @@ do
 done
 
 python3 takepic.py
-git commit -a
+
+rpid=`cat ../../idinfo/sensorid`
+git commit -m "auto upload from ${rpid}" -a
