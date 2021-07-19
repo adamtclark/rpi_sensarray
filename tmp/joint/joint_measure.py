@@ -16,33 +16,30 @@ try:
     trigger = True
     while trigger:
         result_12 = instance_12.read()
+        time.sleep(2)
         result_01 = instance_01.read()
+        time.sleep(2)
         if result_12.is_valid():
-            print("Last valid input: " + str(datetime.datetime.now()))
-            print("Temperature 01: %-3.1f C" % result_12.temperature)
-            print("Humidity 01: %-3.1f %%" % result_12.humidity)
-
             if result_01.is_valid():
+                print("Last valid input: " + str(datetime.datetime.now()))
+                print("Temperature 01: %-3.1f C" % result_12.temperature)
+                print("Humidity 01: %-3.1f %%" % result_12.humidity)
                 print("Temperature 02: %-3.1f C" % result_01.temperature)
                 print("Humidity 02: %-3.1f %%" % result_01.humidity)
                 trigger = False
-        time.sleep(2)
 
 except KeyboardInterrupt:
     print("Cleanup")
     GPIO.cleanup()
 
-#!/usr/bin/python3
-from time import sleep
-import datetime
-import serial
-from w1thermsensor import W1ThermSensor
-from picamera import PiCamera
 
 # Temperature:
+import serial
+from w1thermsensor import W1ThermSensor
+
 for sensor in W1ThermSensor.get_available_sensors():
     print("Sensor %s has temperature %.2f" % (sensor.id, sensor.get_temperature()))
-sleep(1)
+time.sleep(1)
 
 # Moisture:
 if __name__ == '__main__':
@@ -54,12 +51,14 @@ if __name__ == '__main__':
             line = ser.readline().decode('utf-8').rstrip()
             print(line)
             trigger = False
-sleep(1)
+time.sleep(1)
 
 # Camera
+from picamera import PiCamera
+
 camera = PiCamera()
 camera.start_preview()
-sleep(5)
+time.sleep(5)
 tmp = datetime.datetime.now()
 
 camera.capture('out/picture_'+tmp.strftime("%d.%m.%Y_%H.%M.%S")+'.jpg')
