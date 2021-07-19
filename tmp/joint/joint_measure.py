@@ -1,6 +1,8 @@
 # Humidity
 import RPi.GPIO as GPIO
 import dht11
+import time
+import datetime
 
 # initialize GPIO
 GPIO.setwarnings(True)
@@ -62,3 +64,4 @@ tmp = datetime.datetime.now()
 
 camera.capture('out/picture_'+tmp.strftime("%d.%m.%Y_%H.%M.%S")+'.jpg')
 camera.stop_preview()
+print("picture taken")
