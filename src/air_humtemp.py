@@ -1,6 +1,8 @@
 import RPi.GPIO as GPIO
 import dht11
 import time
+import datetime
+tmp = datetime.datetime.now()
 
 # initialize GPIO
 GPIO.setwarnings(True)
@@ -18,7 +20,6 @@ try:
                 trigger = False
             else:
                 time.sleep(0.2)
-                #print("error H1")
 
         trigger = True
         while trigger:
@@ -27,7 +28,7 @@ try:
                 trigger = False
             else:
                 time.sleep(0.2)
-        print("AT01: "+str(result_12.temperature)+"; AH01: "+str(result_12.humidity)+"; AT02: "+str(result_01.temperature)+"; AH02: "+str(result_01.humidity))
+        print(tmp.strftime("%Y.%m.%d_%H.%M.%S")+"; "+"AT01: "+str(result_12.temperature)+"; AH01: "+str(result_12.humidity)+"; AT02: "+str(result_01.temperature)+"; AH02: "+str(result_01.humidity))
 
 except KeyboardInterrupt:
         print("Cleanup")
