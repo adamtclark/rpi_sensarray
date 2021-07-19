@@ -27,7 +27,7 @@ try:
                 trigger = False
             else:
                 time.sleep(0.2)
-        print(str(result_12.temperature)+"; "+str(result_12.humidity)+"; "+str(result_01.temperature)+"; "+str(result_01.humidity))
+        print("AT01: "+str(result_12.temperature)+"; AH01: "+str(result_12.humidity)+"; AT02: "+str(result_01.temperature)+"; AH02: "+str(result_01.humidity))
 
 except KeyboardInterrupt:
         print("Cleanup")
