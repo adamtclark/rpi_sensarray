@@ -17,15 +17,15 @@ do
     python3 soil_moist.py >> ${soil_moist_name}
     python3 soil_temp.py >> ${soil_temp_name}
     python3 gettime.py >> ${time_name}
-    date
-    git commit -m "auto upload from ${rpid}" -a || true
-    git push || true
+    #date
+    #git commit -m "auto upload from ${rpid}" -a || true
+    #git push || true
     sleep 30
     ((counter++))
 done
 
 python3 takepic.py
-echo photo
+#echo photo
 git add ../data/photos/* || true
 git commit -m "auto photo upload from ${rpid}" -a || true
 git push || true

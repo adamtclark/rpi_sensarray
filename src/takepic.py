@@ -3,6 +3,7 @@ from time import sleep
 import datetime
 
 camera = PiCamera()
+camera.rotation = 180
 camera.start_preview()
 sleep(5)
 tmp = datetime.datetime.now()
