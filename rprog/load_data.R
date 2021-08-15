@@ -53,16 +53,18 @@ air_humtempdat$dayofyear = dayofyearlookup[air_humtempdat$month]+air_humtempdat$
 
 # plot example
 if(doplot) {
-  par(mfrow=c(2,2), mar=c(4,4,4,1))
+  par(mfrow=c(2,2), mar=c(2,4,2,1), oma = c(2,0,2,0))
   matplot(air_humtempdat$dayofyear, smoothfun(air_humtempdat[,c("Temp1", "Temp2")], window = windowsize),
           type = "l", xlab = "Day of Year", ylab = "Air Temperature, °C")
   axis(3, at=seq(min(air_humtempdat$dayofyear), max(air_humtempdat$dayofyear), length=8), air_humtempdat$hour[seq(1, nrow(air_humtempdat), length=8)])
-  mtext(side = 3, text = "Hour", line = 2.4)
+  #mtext(side = 3, text = "Hour", line = 2.4)
   
   matplot(air_humtempdat$dayofyear, smoothfun(air_humtempdat[,c("Hum1", "Hum2")], window = windowsize),
           type = "l", xlab = "Day of Year", ylab = "Air Humidity, %")
   axis(3, at=seq(min(air_humtempdat$dayofyear), max(air_humtempdat$dayofyear), length=8), air_humtempdat$hour[seq(1, nrow(air_humtempdat), length=8)])
-  mtext(side = 3, text = "Hour", line = 2.4)
+  #mtext(side = 3, text = "Hour", line = 2.4)
+  mtext(side = 3, text = "Hour of Day", line = 0.5, outer = TRUE)
+  mtext(side = 1, text = "Day of Year", line = 0.5, outer = TRUE)
 }
 
 
@@ -88,7 +90,7 @@ if(doplot) {
   matplot(soil_tempdat$dayofyear, smoothfun(soil_tempdat[,c("Temp1", "Temp2", "Temp3")], window = windowsize),
           type = "l", xlab = "Day of Year", ylab = "Soil Temperature, °C")
   axis(3, at=seq(min(soil_tempdat$dayofyear), max(soil_tempdat$dayofyear), length=8), soil_tempdat$hour[seq(1, nrow(soil_tempdat), length=8)])
-  mtext(side = 3, text = "Hour", line = 2.4)
+  #mtext(side = 3, text = "Hour", line = 2.4)
 }
 
 ## soil moist data
@@ -118,6 +120,6 @@ if(doplot) {
   matplot(soil_moistdat$dayofyear, smoothfun(soil_moistdat[,c("Moist2perc")], window = windowsize),
           type = "l", xlab = "Day of Year", ylab = "Soil Moisture, %")
   axis(3, at=seq(min(soil_moistdat$dayofyear), max(soil_moistdat$dayofyear), length=8), soil_moistdat$hour[seq(1, nrow(soil_moistdat), length=8)])
-  mtext(side = 3, text = "Hour", line = 2.4)
+  #mtext(side = 3, text = "Hour", line = 2.4)
 }
 
