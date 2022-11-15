@@ -9,19 +9,20 @@ time_name="../data/time_data_${rpid}.txt"
 
 while true
 do
+
+python3 takepic.py
+
 counter=1
-while [ $counter -le 10 ]
+while [ $counter -le 30 ]
 do
     date
     python3 air_humtemp.py >> ${air_humtemp_name}
-    python3 soil_moist.py >> ${soil_moist_name}
-    python3 soil_temp.py >> ${soil_temp_name}
+    #python3 soil_moist.py >> ${soil_moist_name}
+    #python3 soil_temp.py >> ${soil_temp_name}
     python3 gettime.py >> ${time_name}
-    sleep 10
+    sleep 120
     ((counter++))
 done
-
-python3 takepic.py
 
 rpid=`cat ../../idinfo/sensorid`
 git add ../data/photos/*
