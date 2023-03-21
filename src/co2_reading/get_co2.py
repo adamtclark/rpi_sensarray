@@ -40,10 +40,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import ccs811LIBRARY
 import time
 import sys
+import datetime
+tmp = datetime.datetime.now()
+
 
 sensor = ccs811LIBRARY.CCS811()
 def setup(mode=1):
-    print('Starting CCS811 Read')
+    # print('Starting CCS811 Read')
     sensor.configure_ccs811()
     sensor.set_drive_mode(mode)
 
@@ -52,20 +55,21 @@ def setup(mode=1):
         raise ValueError('Error at setDriveMode.')
 
     result = sensor.get_base_line()
-    sys.stdout.write("baseline for this sensor: 0x")
-    if result < 0x100:
-        sys.stdout.write('0')
-    if result < 0x10:
-        sys.stdout.write('0')
-    sys.stdout.write(str(result) + "\n")
+    #sys.stdout.write("baseline for this sensor: 0x")
+    #if result < 0x100:
+    #    sys.stdout.write('0')
+    #if result < 0x10:
+    #    sys.stdout.write('0')
+    #sys.stdout.write(str(result) + "\n")
 
 
 setup(1) # Setting mode
 
-while True:
-    if sensor.data_available():
-        sensor.read_logorithm_results()
-        print("eCO2[%d] TVOC[%d]" % (sensor.CO2, sensor.tVOC))
-    elif sensor.check_for_error():
-        sensor.print_error()
-    time.sleep(1)
+#while True:
+if sensor.data_available():
+sensor.read_logorithm_results()
+print(tmp.strftime("%Y.%m.%d_%H.%M.%S")+"; eCO2: %d; TVOC: %d" % (sensor.CO2, sensor.tVOC))
+elif sensor.check_for_error():
+sensor.print_error()
+time.sleep(2)
+
