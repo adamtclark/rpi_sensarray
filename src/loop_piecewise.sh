@@ -10,7 +10,8 @@ time_name="../data/time_data_${rpid}.txt"
 while true
 do
 
-python3 takepic.py
+python3 takepic_NIR.py
+python3 takepic_RGB.py
 
 counter=1
 while [ $counter -le 30 ]

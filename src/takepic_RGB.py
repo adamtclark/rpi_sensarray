@@ -11,7 +11,6 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(6, GPIO.OUT)
 GPIO.setup(5, GPIO.OUT)
 
-
 #GPIO 5 auf HIGH setzen
 GPIO.output(5, GPIO.HIGH)
 
@@ -19,7 +18,6 @@ GPIO.output(5, GPIO.HIGH)
 GPIO.output(6, GPIO.LOW)
 
 sleep(2)
-
 
 camera = PiCamera()
 camera.start_preview()
