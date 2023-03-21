@@ -2,7 +2,9 @@
 # them all out.
 # Author: Tony DiCola
 # License: Public Domain
-import time
+from time import sleep
+import datetime
+tmp = datetime.datetime.now()
 
 # Import SPI library (for hardware SPI) and MCP3008 library.
 import Adafruit_GPIO.SPI as SPI
@@ -24,16 +26,21 @@ mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
 print('Reading MCP3008 values, press Ctrl-C to quit...')
 # Print nice channel column headers.
-print('| {0:>4} | {1:>4} | {2:>4} | {3:>4} | {4:>4} | {5:>4} | {6:>4} | {7:>4} |'.format(*range(8)))
-print('-' * 57)
+#print('| {0:>4} | {1:>4} | {2:>4} | {3:>4} | {4:>4} | {5:>4} | {6:>4} | {7:>4} |'.format(*range(8)))
+#print('-' * 57)
 # Main program loop.
-while True:
-    # Read all the ADC channel values in a list.
-    values = [0]*8
-    for i in range(8):
-        # The read_adc function will get the value of the specified channel (0-7).
-        values[i] = mcp.read_adc(i)
-    # Print the ADC values.
-    print('| {0:>4} | {1:>4} | {2:>4} | {3:>4} | {4:>4} | {5:>4} | {6:>4} | {7:>4} |'.format(*values))
-    # Pause for half a second.
-    time.sleep(0.5)
+#while True:
+
+sleep(2)
+
+# Read all the ADC channel values in a list.
+values = [0]*8
+for i in range(2):
+    # The read_adc function will get the value of the specified channel (0-7).
+    values[i] = mcp.read_adc(i)
+# Print the ADC values.
+print(tmp.strftime("%Y.%m.%d_%H.%M.%S")'"; SM01: " {0:>4} "; SM02: " {1:>4}'.format(*values))
+
+
+
+
