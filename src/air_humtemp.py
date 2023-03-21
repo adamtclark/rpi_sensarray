@@ -10,7 +10,7 @@ tmp = datetime.datetime.now()
 
 # read data using pin 12 and 1
 #instance_12 = dht.DHT22(pin=12)
-#instance_01 = dht.DHT22(pin=1)
+#instance_01 = dht.DHT22(pin=25)
 
 #try:
 #        trigger = True
