@@ -4,6 +4,7 @@ air_humtemp_name="../data/air_humtemp_data_${rpid}.txt"
 soil_moist_name="../data/soil_moist_data_${rpid}.txt"
 soil_temp_name="../data/soil_temp_data_${rpid}.txt"
 time_name="../data/time_data_${rpid}.txt"
+co2_name="../data/co2_data_${rpid}.txt"
 
 if [ ! -f "$air_humtemp_name" ]; then
     touch ${air_humtemp_name}
@@ -16,4 +17,7 @@ if [ ! -f "$soil_temp_name" ]; then
 fi
 if [ ! -f "$time_name" ]; then
     touch ${time_name}
+fi
+if [ ! -f "$co2_name" ]; then
+    touch ${co2_name}
 fi
