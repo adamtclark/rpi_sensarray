@@ -67,9 +67,12 @@ setup(1) # Setting mode
 
 #while True:
 if sensor.data_available():
-sensor.read_logorithm_results()
-print(tmp.strftime("%Y.%m.%d_%H.%M.%S")+"; eCO2: %d; TVOC: %d" % (sensor.CO2, sensor.tVOC))
-elif sensor.check_for_error():
-sensor.print_error()
+    for x in range(5):
+    	sensor.read_logorithm_results()
+    	time.sleep(2)
+    #sensor.read_logorithm_results()
+    print(tmp.strftime("%Y.%m.%d_%H.%M.%S")+"; eCO2: %d; TVOC: %d" % (sensor.CO2, sensor.tVOC))
+#elif sensor.check_for_error():
+#sensor.print_error()
 time.sleep(2)
 
