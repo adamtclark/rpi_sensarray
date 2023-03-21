@@ -18,8 +18,8 @@ while [ $counter -le 30 ]
 do
     date
     python3 air_humtemp.py >> ${air_humtemp_name}
-    #python3 soil_moist.py >> ${soil_moist_name}
-    #python3 soil_temp.py >> ${soil_temp_name}
+    python3 soil_moist_array.py >> ${soil_moist_name}
+    python3 soil_temp.py >> ${soil_temp_name}
     python3 gettime.py >> ${time_name}
     sleep 120
     ((counter++))
