@@ -22,7 +22,7 @@ do
     date
     python3 air_humtemp.py >> ${air_humtemp_name}
     python3 soil_moist_array.py >> ${soil_moist_name}
-    python3 soil_temp.py >> ${soil_temp_name}
+    python3 soil_temp_2sensors.py >> ${soil_temp_name}
     python3 gettime.py >> ${time_name}
     python3 co2_reading/get_co2.py >> ${co2_name}
     sleep 120
