@@ -35,11 +35,11 @@ sleep(2)
 
 # Read all the ADC channel values in a list.
 values = [0]*8
-for i in range(2):
+for i in range(8):
     # The read_adc function will get the value of the specified channel (0-7).
     values[i] = mcp.read_adc(i)
 # Print the ADC values.
-print(tmp.strftime("%Y.%m.%d_%H.%M.%S")+'; SM01: {0:>4}; SM02: {1:>4}'.format(*values))
+print(tmp.strftime("%Y.%m.%d_%H.%M.%S")+'; SM01: {6:>4}; SM02: {7:>4}'.format(*values))
 
 
 
