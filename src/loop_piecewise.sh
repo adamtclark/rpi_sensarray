@@ -30,7 +30,7 @@ do
 done
 
 rpid=`cat ../../idinfo/sensorid`
-git add ../data/photos/*
-git commit -m "auto upload from ${rpid}" -a
-git push
+#git add ../data/photos/*
+#git commit -m "auto upload from ${rpid}" -a
+#git push
 done
